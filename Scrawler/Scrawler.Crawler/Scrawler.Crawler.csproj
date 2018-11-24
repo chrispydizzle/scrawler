@@ -41,6 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Output\CrawlResultHtmlWriter.cs" />
+    <Compile Include="Output\CrawlResultTextWriter.cs" />
+    <Compile Include="Output\CrawlResultXmlWriter.cs" />
+    <Compile Include="Parsing\ParseResult.cs" />
     <Compile Include="Parsing\ResultParser.cs" />
     <Compile Include="Logging\ConsoleLogger.cs" />
     <Compile Include="Logging\ILog.cs" />

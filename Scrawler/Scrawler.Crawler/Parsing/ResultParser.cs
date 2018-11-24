@@ -1,53 +1,86 @@
 ﻿namespace Scrawler.Crawler
 {
-    using System.Collections.Generic;
-    using System.Linq;
+    using System;
+    using System.Text;
     using System.Text.RegularExpressions;
-    using Results;
 
     /// <summary>
-    /// A helper class for working with HTML. There are libraries out there that do this much better,
-    /// but in the interest of keeping 
+    ///     A helper class for working with HTML. There are libraries out there that do this much better,
+    ///     but in the interest of keeping my dependencies low and just-my-code, I did some regex magic to parse the
+    ///     probably important strings.
     /// </summary>
     public class ResultParser
     {
-        public List<string> GetStaticLinks(string body)
-        {
-            List<string> staticLinks = new List<string>();
-            staticLinks.AddRange(this.GetLinkTags(body));
-            staticLinks.AddRange(this.GetScriptTags(body));
-            staticLinks.AddRange(this.GetImageTags(body));
+        // This beast of a regex does all my parsing in a single pass
+        private readonly Regex captureRegex = new Regex("(?:(?:(?:<link [^>]*href=['\"])([^'\"]*)['\"])|(?:<(?:[^</!>]+) [^>]* src=['\"]?([^'\" ]*)['\"]?)|(?:url\\(['\"]?([^'\")]*)['\"]?\\))|(?:<a [^>]*href=['\"]([^'\"#]*)))");
+        private readonly Uri originUri;
 
-            return staticLinks;
+        public ResultParser(Uri currentTarget)
+        {
+            this.originUri = currentTarget;
         }
 
-        private List<string> GetMatchDistinctList(MatchCollection matches)
+        public ParseResult ParseResult(string body)
         {
-            return (from Match match in matches select match.Groups into groups select groups[1].Value).Distinct().ToList();
+            MatchCollection matchCollection = this.captureRegex.Matches(body);
+            ParseResult pr = new ParseResult();
+
+            foreach (Match match in matchCollection)
+            {
+                if (!string.IsNullOrEmpty(match.Groups[4].Value))
+                {
+                    string massageMatch = this.MassageMatch(match.Groups[4].Value);
+                    if (!string.IsNullOrEmpty(massageMatch)) pr.PageLinks.Add(massageMatch);
+                }
+                else
+                {
+                    string massageMatch = this.MassageMatch(match.Groups[1].Value, match.Groups[2].Value, match.Groups[3].Value);
+                    if (!string.IsNullOrEmpty(massageMatch)) pr.StaticLinks.Add(massageMatch);
+                }
+            }
+
+            return pr;
         }
 
-        private IEnumerable<string> GetImageTags(string body)
+        private string MassageMatch(params string[] args)
         {
-            MatchCollection matches = Regex.Matches(body, "<img [^>]*src=\"([^\"]*)\"");
-            return this.GetMatchDistinctList(matches);
-        }
+            foreach (string s in args)
+            {
+                if (!string.IsNullOrEmpty(s))
+                {
+                    if (Uri.TryCreate(s, UriKind.Absolute, out Uri output)) return s;
 
-        private IEnumerable<string> GetScriptTags(string body)
-        {
-            MatchCollection matches = Regex.Matches(body, "<script [^>]*src=\"([^\"]*)\"");
-            return this.GetMatchDistinctList(matches);
-        }
+                    if (s.StartsWith("//"))
+                    {
+                        string newString = $"{this.originUri.Scheme}:{s}";
+                        bool isWellFormedUriString = Uri.IsWellFormedUriString(newString, UriKind.Absolute);
+                        if (isWellFormedUriString) return newString;
+                    }
 
-        private IEnumerable<string> GetLinkTags(string body)
-        {
-            MatchCollection matches = Regex.Matches(body, "<link [^>]*href=\"([^\"]*)\"");
-            return this.GetMatchDistinctList(matches);
-        }
+                    if (s.StartsWith("/"))
+                    {
+                        string newString = $"{this.originUri.Scheme}://{this.originUri.Authority}{s}";
+                        bool isWellFormedUriString = Uri.IsWellFormedUriString(newString, UriKind.Absolute);
+                        if (isWellFormedUriString) return newString;
+                    }
 
-        public List<string> GetAnchorLinks(string body)
-        {
-            MatchCollection matches = Regex.Matches(body, "<a [^>]*href=\"([^\"#]*)");
-            return this.GetMatchDistinctList(matches);
+                    if (!s.StartsWith("https://") && !s.StartsWith("http://"))
+                    {
+                        // Attempt to build a relative link
+                        StringBuilder b = new StringBuilder();
+                        foreach (string originUriSegment in this.originUri.Segments)
+                        {
+                            if (originUriSegment.EndsWith("/")) b.Append(originUriSegment);
+                        }
+
+                        b.Append(s);
+
+                        return $"{this.originUri.Scheme}://{this.originUri.Authority}{b}";
+                    }
+                }
+            }
+
+            return null;
         }
     }
 }

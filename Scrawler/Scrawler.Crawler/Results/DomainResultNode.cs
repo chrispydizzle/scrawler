@@ -1,21 +1,36 @@
 ﻿namespace Scrawler.Crawler.Results
 {
     using System.Collections.Generic;
+    using System.Xml.Serialization;
 
     public class DomainResultNode : DomainResultLeaf
     {
+        public DomainResultNode()
+        {
+        }
+
         public DomainResultNode(string url)
             : base(url)
         {
-            this.DomainResultNodes = new List<DomainResultNode>();
-            this.DomainResultLeaves = new List<DomainResultLeaf>();
-            this.ExternalResultLeaves = new List<ExternalResultLeaf>();
+            this.InternalPageLinks = new List<DomainResultLeaf>();
+            this.InternalStaticLinks = new List<DomainResultLeaf>();
+            this.ExternalPageLinks = new List<ExternalResultLeaf>();
+            this.ExternalStaticLinks = new List<ExternalResultLeaf>();
         }
 
-        public List<DomainResultNode> DomainResultNodes { get; set; }
+        [XmlArrayItem("LinkTo")]
+        public List<DomainResultLeaf> InternalPageLinks { get; set; }
 
-        public List<DomainResultLeaf> DomainResultLeaves { get; set; }
+        [XmlArrayItem("LinkTo")]
+        public List<DomainResultLeaf> InternalStaticLinks { get; set; }
 
-        public List<ExternalResultLeaf> ExternalResultLeaves { get; set; }
+        [XmlArrayItem("LinkTo")]
+        public List<ExternalResultLeaf> ExternalPageLinks { get; set; }
+
+        [XmlArrayItem("LinkTo")]
+        public List<ExternalResultLeaf> ExternalStaticLinks { get; set; }
+
+        [XmlAttribute]
+        public int StatusCode { get; set; }
     }
 }

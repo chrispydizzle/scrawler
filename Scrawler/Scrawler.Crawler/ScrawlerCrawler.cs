@@ -1,32 +1,43 @@
 ﻿namespace Scrawler.Crawler
 {
     using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
     using System.Linq;
     using System.Net.Http;
+    using System.Threading;
     using Logging;
     using PageRequester;
     using Results;
 
     /// <summary>
-    ///     This guy handles initing the crawler and
+    ///     The primary crawler class
     /// </summary>
     public class ScrawlerCrawler
     {
         private readonly ILog logger;
         private readonly IRequestPages pageRequester;
-        private readonly ResultParser parser;
+        private int maxDepth;
 
         /// <summary>
         ///     default ctor for concrete usage
         /// </summary>
         public ScrawlerCrawler()
-            : this(new InternetPageRequester(), new ConsoleLogger())
+            : this(new InternetPageRequester(), new ConsoleLogger(), 5)
         {
         }
 
+        public ScrawlerCrawler(int maxDepth)
+            : this(new InternetPageRequester(), new ConsoleLogger(), maxDepth)
+        {
+        }
+
+        /// <summary>
+        ///     ctor to pass in a page requester and use a standard console logger
+        /// </summary>
+        /// <param name="pageRequester">A page requester</param>
         public ScrawlerCrawler(IRequestPages pageRequester)
-        : this(pageRequester, new ConsoleLogger())
+            : this(pageRequester, new ConsoleLogger(), 5)
         {
         }
 
@@ -35,94 +46,107 @@
         /// </summary>
         /// <param name="pageRequester">A page requester</param>
         /// <param name="logger">A logger</param>
-        public ScrawlerCrawler(IRequestPages pageRequester, ILog logger)
+        public ScrawlerCrawler(IRequestPages pageRequester, ILog logger, int maxDepth)
         {
             this.pageRequester = pageRequester;
             this.logger = logger;
-            this.parser = new ResultParser();
+            this.maxDepth = maxDepth;
         }
 
         /// <summary>
         ///     Kicks off a crawler at the targeted URL
         /// </summary>
-        /// <param name="originUrl">The URL to crawl</param>
+        /// <param name="originUrl">The URL or domain name to crawl</param>
         public CrawlResult Crawl(string originUrl)
         {
             this.logger.Log($"Beginning Crawl of {originUrl}");
 
-            if (!originUrl.StartsWith("http://"))
-            {
-                originUrl = $"http://{originUrl}";
-            }
+            if (!originUrl.StartsWith("http")) originUrl = $"http://{originUrl}";
 
             // Get root domain
             Uri originUri = new Uri(originUrl);
             string domain = originUri.Authority;
 
             // initialize crawler queue, hashset, and output result
-            CrawlResult cr = new CrawlResult(domain);
-            HashSet<string> visited = new HashSet<string>();
-            Queue<string> toVisit = new Queue<string>();
+            CrawlResult cr = new CrawlResult(originUri);
 
-            toVisit.Enqueue(originUrl);
+            HashSet<Uri> visited = new HashSet<Uri>();
+            ConcurrentQueue<Uri> toVisit = new ConcurrentQueue<Uri>();
 
-            while (toVisit.Any())
+            toVisit.Enqueue(originUri);
+
+            int depthCounter = 0;
+            HashSet<Uri> nextLevel = new HashSet<Uri>();
+            while (toVisit.Any() && depthCounter < 5)
             {
-                string currentTarget = toVisit.Dequeue();
+                if (!toVisit.TryDequeue(out Uri currentTarget))
+                {
+                    Thread.Sleep(100);
+                    continue;
+                }
 
-                // don't revisit visited urls
                 if (visited.Contains(currentTarget)) continue;
-
-                this.logger.Log($"Evaluating {currentTarget}");
                 visited.Add(currentTarget);
+                DomainResultNode resultNode = new DomainResultNode(currentTarget.AbsoluteUri);
 
-                DomainResultNode resultNode = new DomainResultNode(currentTarget);
+                HttpResponseMessage responseMessage = this.pageRequester.Request(currentTarget);
 
-                Uri targetUri = new Uri(currentTarget);
-                HttpResponseMessage responseMessage = this.pageRequester.Request(targetUri);
-
-                int statusCode = (int)responseMessage.StatusCode;
+                int statusCode = (int) responseMessage.StatusCode;
                 this.logger.Log($"GET {currentTarget} - {statusCode}");
 
                 resultNode.StatusCode = statusCode;
-
-                if (statusCode == 200)
+                if (statusCode == 200 && responseMessage.Content.Headers.ContentType.MediaType.StartsWith("text"))
                 {
-                    // Status code 200 is ok - we can check the content 
-                    if (responseMessage.Content.Headers.ContentType.MediaType.StartsWith("text"))
+                    try
                     {
                         string body = responseMessage.Content.ReadAsStringAsync().Result;
-                        List<string> urls = this.parser.GetAnchorLinks(body);
 
-                        foreach (string link in urls)
+                        ResultParser parser = new ResultParser(currentTarget);
+                        ParseResult urls = parser.ParseResult(body);
+
+                        foreach (string link in urls.PageLinks)
                         {
-                            if (link.StartsWith(domain))
+                            Uri currentUri = new Uri(link);
+                            if (currentUri.Authority == domain && (currentUri.Scheme == "http" || currentUri.Scheme == "https"))
                             {
-                                resultNode.DomainResultNodes.Add(new DomainResultNode(link));
-                                toVisit.Enqueue(link);
+                                resultNode.InternalPageLinks.Add(new DomainResultLeaf(currentUri.AbsoluteUri));
+                                nextLevel.Add(currentUri);
                             }
                             else
                             {
-                                resultNode.ExternalResultLeaves.Add(new ExternalResultLeaf(link));
+                                resultNode.ExternalPageLinks.Add(new ExternalResultLeaf(currentUri.AbsoluteUri));
                             }
                         }
 
-                        List<string> staticLinks = this.parser.GetStaticLinks(body);
-                        foreach (string link in staticLinks)
+                        foreach (string link in urls.StaticLinks)
                         {
-                            if (link.StartsWith(domain))
+                            Uri currentUri = new Uri(link);
+                            if (currentUri.Authority == domain)
                             {
-                                resultNode.DomainResultLeaves.Add(new DomainResultLeaf(link));
+                                resultNode.InternalStaticLinks.Add(new DomainResultLeaf(currentUri.AbsoluteUri));
                             }
                             else
                             {
-                                resultNode.ExternalResultLeaves.Add(new ExternalResultLeaf(link));
+                                resultNode.ExternalStaticLinks.Add(new ExternalResultLeaf(currentUri.AbsoluteUri));
                             }
                         }
                     }
-                }
+                    catch (Exception ex)
+                    {
+                        this.logger.Log($"An error occurred parsing {currentTarget}: {ex}");
+                        resultNode.StatusCode = 500;
+                    }
 
-                cr.DomainResultNodes.Add(resultNode);
+                    cr.TravesedPages.Add(resultNode);
+
+                    if (!toVisit.Any())
+                    {
+                        toVisit = new ConcurrentQueue<Uri>(nextLevel);
+                        this.logger.Log($"Increasing Depth to {depthCounter}");
+                        depthCounter++;
+                        nextLevel.Clear();
+                    }
+                }
             }
 
             return cr;
