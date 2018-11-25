@@ -22,7 +22,7 @@ eg: `scrawler dogeplanet.com 12` <br />
 Would execute the crawl across 12 threads. The default is four.
 
 ## Output
-Output is in xml format- a sample of me crawling cpsharp.net can be found here: https://github.com/chrispydizzle/scrawler/cpsharp.net.crawlResult.xml
+Output is in xml format- a sample of me crawling cpsharp.net can be found here: https://raw.githubusercontent.com/chrispydizzle/scrawler/master/cpsharp.net.crawlResult.xml
 <br />The format is as follows:<br />
 ```xml
 <CrawlResult xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Domain="cpsharp.net" BaseUrl="http://cpsharp.net/">
