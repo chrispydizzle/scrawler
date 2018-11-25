@@ -65,7 +65,7 @@ So, what would I like to see added, time permitting?
 * I'd have liked to improve the console input, to allow for more options and a better user experience. At the moment you just throw in a domain or a url and optionally the thread count.
 * While the xml output is by all means descriptive, it could definitely be made prettier.
 * It would be a nice feature if the crawler dove into other artifacts (like css files) looking for additional static elements. 
-* Right now the crawler only analyzes pages linked via an <a> tag. This means links that are triggered via javascript will be missed.
+* Right now the crawler only analyzes pages linked via an \<a> tag. This means links that are triggered via javascript will be missed.
 
 ### Other Dependencies
 I've made use of the HtmlAgilityPack (freely available, here: https://html-agility-pack.net/) to manage html parsing. <br />
