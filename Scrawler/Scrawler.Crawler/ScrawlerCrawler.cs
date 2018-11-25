@@ -14,9 +14,9 @@
     /// </summary>
     public class ScrawlerCrawler
     {
+        private readonly CrawlConfiguration config;
         private readonly ILog logger;
         private readonly IRequestPages pageRequester;
-        private readonly CrawlConfiguration config;
         private readonly CountdownEvent threadLimiter = new CountdownEvent(1);
 
         /// <summary>
@@ -24,6 +24,11 @@
         /// </summary>
         public ScrawlerCrawler()
             : this(new InternetPageRequester(), new ConsoleLogger())
+        {
+        }
+
+        public ScrawlerCrawler(CrawlConfiguration config)
+            : this(new InternetPageRequester(), new ConsoleLogger(), config)
         {
         }
 
@@ -107,8 +112,8 @@
                     {
                         this.logger.Log($"Crawler processing {target}.");
                         ResponseResult processedResponse = new ResponseWorker(target).ProcessResponse(this.pageRequester.Request(target));
-                        
-                        foreach (Uri uri in processedResponse.InternalUris)    
+
+                        foreach (Uri uri in processedResponse.InternalUris)
                         {
                             foundUris.Enqueue(uri);
                         }

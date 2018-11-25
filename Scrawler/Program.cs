@@ -17,6 +17,8 @@ namespace Scrawler
         private static void Main(string[] args)
         {
             string initialUrl;
+            int threads = 4;
+
             if (!Debugger.IsAttached)
             {
                 if (!ValidateArgs(args))
@@ -26,6 +28,11 @@ namespace Scrawler
                 }
 
                 initialUrl = args[0];
+
+                if (args.Length > 1)
+                {
+                    threads = int.Parse(args[1]);
+                }
             }
             else
             {
@@ -33,11 +40,11 @@ namespace Scrawler
                 initialUrl = Console.ReadLine();
             }
 
-            ScrawlerCrawler sc = new ScrawlerCrawler();
+            ScrawlerCrawler sc = new ScrawlerCrawler(new CrawlConfiguration() { Threads = threads });
             CrawlResult crawlResult = sc.Crawl(initialUrl);
             string result = new CrawlResultXmlWriter().Write(crawlResult);
             string domain = new Uri(crawlResult.BaseUrl).Authority;
-            string pathLocation = args.Length > 1 ? args[1] : Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            string pathLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             string outputPath = $"{pathLocation}\\{domain}.crawlResult.xml";
 
             Console.WriteLine($"Writing results to {outputPath}");
@@ -69,7 +76,7 @@ namespace Scrawler
         private static void OutputHelp()
         {
             Console.WriteLine("At least one argument, the origin url, should be passed in.");
-            Console.WriteLine("An optional argument, the directory to output the result of the crawl, may be provided.");
+            Console.WriteLine("An optional second argument, the number of threads the process should use to engage in crawling. (default is four)");
             Console.WriteLine("eg: scrawler cpsharp.net ..");
         }
     }

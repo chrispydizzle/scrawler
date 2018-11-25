@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-16"?>
+<CrawlResult xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Domain="cpsharp.net" BaseUrl="http://cpsharp.net/">
+  <TravesedPages>
+    <Page Url="https://cpsharp.net/category/root/contact/" StatusCode="200">
+      <InternalPageLinks>
+        <LinkTo Url="https://cpsharp.net/category/root/aboutus/" />
+        <LinkTo Url="https://cpsharp.net/category/root/tech/" />
+        <LinkTo Url="https://cpsharp.net/category/root/contact/" />
+        <LinkTo Url="https://cpsharp.net/category/root/services/" />
+        <LinkTo Url="https://cpsharp.net/category/root/folio/" />
+      </InternalPageLinks>
+      <InternalStaticLinks>
+        <LinkTo Url="https://cpsharp.net/category/root/contact/" />
+        <LinkTo Url="https://cpsharp.net/feed/" />
+        <LinkTo Url="https://cpsharp.net/comments/feed/" />
+        <LinkTo Url="https://cpsharp.net/category/root/contact/feed/" />
+        <LinkTo Url="https://cpsharp.net/wp-content/themes/cpsharp/A.style.css,qver=2.6.1.pagespeed.cf.3tT5qO8zy3.css" />
+        <LinkTo Url="https://cpsharp.net/wp-content/themes/cpsharp/style/A.modals.css,qver=2.6.1.pagespeed.cf.ocr2OpfMjj.css" />
+        <LinkTo Url="https://cpsharp.net/wp-content/plugins/jetpack/css/A.jetpack.css,qver=6.7.pagespeed.cf.Q7AhKVCDHQ.css" />
+        <LinkTo Url="https://cpsharp.net/wp-includes/js/jquery/jquery.js,qver=1.12.4.pagespeed.jm.pPCPAKkkss.js" />
+        <LinkTo Url="https://cpsharp.net/wp-includes/js/jquery/jquery-migrate.min.js,qver=1.4.1.pagespeed.jm.C2obERNcWh.js" />
+        <LinkTo Url="https://cpsharp.net/wp-content/plugins/google-analytics-for-wordpress/assets/js/frontend.min.js,qver=7.3.0.pagespeed.jm.aDYN2n5LR8.js" />
+        <LinkTo Url="https://cpsharp.net/wp-json/" />
+        <LinkTo Url="https://cpsharp.net/xmlrpc.php?rsd" />
+        <LinkTo Url="https://cpsharp.net/wp-includes/wlwmanifest.xml" />
+        <LinkTo Url="https://cpsharp.net/xmlrpc.php" />
+        <LinkTo Url="https://cpsharp.net/wp-content/uploads/2015/09/xcropped-cpsharp11.png.pagespeed.ic.1QCdkhCAxl.png" />
+        <LinkTo Url="https://cpsharp.net/wp-content/themes/cpsharp/lib/d3.js,qver=1.0.0.pagespeed.jm.ieQik8OGWM.js" />
+        <LinkTo Url="https://cpsharp.net/wp-content/themes/cpsharp/lib/tweenlite.js,qver==1.0.0+gs.cssplugin.js,qver==1.0.0+gs.easepack.js,qver==1.0.0.pagespeed.jc.1HZvxXS361.js" />
+        <LinkTo Url="https://cpsharp.net/wp-content,_themes,_cpsharp,_js,_app.core.js,qver==1.0.0+wp-content,_themes,_cpsharp,_js,_app.js,qver==1.0.0+wp-content,_themes,_cpsharp,_js,_app.map.js,qver==1.0.0+wp-content,_themes,_cpsharp,_js,_app.ui.js,qver==1.0.0+wp-content,_themes,_cpsharp,_js,_app.ui.builder.js,qver==1.0.0+wp-includes,_js,_wp-embed.min.js,qver==4.9.8.pagespeed.jc.rUlAa4iiEB.js" />
+      </InternalStaticLinks>
+      <ExternalPageLinks />
+      <ExternalStaticLinks>
+        <LinkTo Url="https://s0.wp.com/" />
+        <LinkTo Url="https://fonts.googleapis.com/" />
+        <LinkTo Url="https://s.w.org/" />
+        <LinkTo Url="https://fonts.googleapis.com/css?family=Coda%7CRaleway:400%2C700%2C200&amp;" />
+        <LinkTo Url="https://v0.wordpress.com/" />
+        <LinkTo Url="https://i0.wp.com/" />
+        <LinkTo Url="https://i1.wp.com/" />
+        <LinkTo Url="https://i2.wp.com/" />
+        <LinkTo Url="https://i1.wp.com/cpsharp.net/wp-content/uploads/2015/09/cropped-cpsharp.logo_.300.white_.png?fit=32%2C32&amp;" />
+        <LinkTo Url="https://i1.wp.com/cpsharp.net/wp-content/uploads/2015/09/cropped-cpsharp.logo_.300.white_.png?fit=192%2C192&amp;" />
+        <LinkTo Url="https://i1.wp.com/cpsharp.net/wp-content/uploads/2015/09/cropped-cpsharp.logo_.300.white_.png?fit=180%2C180&amp;" />
+        <LinkTo Url="https://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201847" />
+        <LinkTo Url="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" />
+        <LinkTo Url="https://stats.wp.com/e-201847.js" />
+      </ExternalStaticLinks>
+    </Page>
+    <Page Url="http://cpsharp.net/" StatusCode="200">
+      <InternalPageLinks>
+        <LinkTo Url="https://cpsharp.net/category/root/aboutus/" />
+        <LinkTo Url="https://cpsharp.net/category/root/tech/" />
+        <LinkTo Url="https://cpsharp.net/category/root/contact/" />
+        <LinkTo Url="https://cpsharp.net/category/root/services/" />
+        <LinkTo Url="https://cpsharp.net/category/root/folio/" />
+      </InternalPageLinks>
+      <InternalStaticLinks>
+        <LinkTo Url="https://cpsharp.net/" />
+        <LinkTo Url="https://cpsharp.net/feed/" />
+        <LinkTo Url="https://cpsharp.net/comments/feed/" />
+        <LinkTo Url="https://cpsharp.net/wp-includes/js/jquery/jquery.js,qver=1.12.4.pagespeed.jm.pPCPAKkkss.js" />
+        <LinkTo Url="https://cpsharp.net/wp-includes/js/jquery/jquery-migrate.min.js,qver=1.4.1.pagespeed.jm.C2obERNcWh.js" />
+        <LinkTo Url="https://cpsharp.net/wp-content/plugins/google-analytics-for-wordpress/assets/js/frontend.min.js,qver=7.3.0.pagespeed.jm.aDYN2n5LR8.js" />
+        <LinkTo Url="https://cpsharp.net/wp-json/" />
+        <LinkTo Url="https://cpsharp.net/xmlrpc.php?rsd" />
+        <LinkTo Url="https://cpsharp.net/wp-includes/wlwmanifest.xml" />
+        <LinkTo Url="https://cpsharp.net/xmlrpc.php" />
+        <LinkTo Url="https://cpsharp.net/wp-content/uploads/2015/09/xcropped-cpsharp11.png.pagespeed.ic.1QCdkhCAxl.png" />
+        <LinkTo Url="https://cpsharp.net/wp-content/themes/cpsharp/lib/d3.js,qver=1.0.0.pagespeed.jm.ieQik8OGWM.js" />
+        <LinkTo Url="https://cpsharp.net/wp-content/themes/cpsharp/lib/tweenlite.js,qver==1.0.0+gs.cssplugin.js,qver==1.0.0+gs.easepack.js,qver==1.0.0.pagespeed.jc.1HZvxXS361.js" />
+        <LinkTo Url="https://cpsharp.net/wp-content,_themes,_cpsharp,_js,_app.core.js,qver==1.0.0+wp-content,_themes,_cpsharp,_js,_app.js,qver==1.0.0+wp-content,_themes,_cpsharp,_js,_app.map.js,qver==1.0.0+wp-content,_themes,_cpsharp,_js,_app.ui.js,qver==1.0.0+wp-content,_themes,_cpsharp,_js,_app.ui.builder.js,qver==1.0.0+wp-includes,_js,_wp-embed.min.js,qver==4.9.8.pagespeed.jc.rUlAa4iiEB.js" />
+        <LinkTo Url="https://cpsharp.net/wp-content/themes/cpsharp/A.style.css,qver=2.6.1.pagespeed.cf.3tT5qO8zy3.css" />
+        <LinkTo Url="https://cpsharp.net/wp-content/themes/cpsharp/style/A.modals.css,qver=2.6.1.pagespeed.cf.ocr2OpfMjj.css" />
+        <LinkTo Url="https://cpsharp.net/wp-content/plugins/jetpack/css/A.jetpack.css,qver=6.7.pagespeed.cf.Q7AhKVCDHQ.css" />
+      </InternalStaticLinks>
+      <ExternalPageLinks />
+      <ExternalStaticLinks>
+        <LinkTo Url="http://s0.wp.com/" />
+        <LinkTo Url="http://fonts.googleapis.com/" />
+        <LinkTo Url="http://s.w.org/" />
+        <LinkTo Url="https://fonts.googleapis.com/css?family=Coda%7CRaleway:400%2C700%2C200&amp;" />
+        <LinkTo Url="https://wp.me/7BNJE" />
+        <LinkTo Url="http://v0.wordpress.com/" />
+        <LinkTo Url="http://i0.wp.com/" />
+        <LinkTo Url="http://i1.wp.com/" />
+        <LinkTo Url="http://i2.wp.com/" />
+        <LinkTo Url="https://i1.wp.com/cpsharp.net/wp-content/uploads/2015/09/cropped-cpsharp.logo_.300.white_.png?fit=32%2C32&amp;" />
+        <LinkTo Url="https://i1.wp.com/cpsharp.net/wp-content/uploads/2015/09/cropped-cpsharp.logo_.300.white_.png?fit=192%2C192&amp;" />
+        <LinkTo Url="https://i1.wp.com/cpsharp.net/wp-content/uploads/2015/09/cropped-cpsharp.logo_.300.white_.png?fit=180%2C180&amp;" />
+        <LinkTo Url="https://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201847" />
+        <LinkTo Url="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" />
+        <LinkTo Url="https://stats.wp.com/e-201847.js" />
+      </ExternalStaticLinks>
+    </Page>
+    <Page Url="https://cpsharp.net/category/root/folio/" StatusCode="200">
+      <InternalPageLinks>
+        <LinkTo Url="https://cpsharp.net/category/root/aboutus/" />
+        <LinkTo Url="https://cpsharp.net/category/root/tech/" />
+        <LinkTo Url="https://cpsharp.net/category/root/contact/" />
+        <LinkTo Url="https://cpsharp.net/category/root/services/" />
+        <LinkTo Url="https://cpsharp.net/category/root/folio/" />
+      </InternalPageLinks>
+      <InternalStaticLinks>
+        <LinkTo Url="https://cpsharp.net/category/root/folio/" />
+        <LinkTo Url="https://cpsharp.net/feed/" />
+        <LinkTo Url="https://cpsharp.net/comments/feed/" />
+        <LinkTo Url="https://cpsharp.net/category/root/folio/feed/" />
+        <LinkTo Url="https://cpsharp.net/wp-content/themes/cpsharp/A.style.css,qver=2.6.1.pagespeed.cf.3tT5qO8zy3.css" />
+        <LinkTo Url="https://cpsharp.net/wp-content/themes/cpsharp/style/A.modals.css,qver=2.6.1.pagespeed.cf.ocr2OpfMjj.css" />
+        <LinkTo Url="https://cpsharp.net/wp-content/plugins/jetpack/css/A.jetpack.css,qver=6.7.pagespeed.cf.Q7AhKVCDHQ.css" />
+        <LinkTo Url="https://cpsharp.net/wp-includes/js/jquery/jquery.js,qver=1.12.4.pagespeed.jm.pPCPAKkkss.js" />
+        <LinkTo Url="https://cpsharp.net/wp-includes/js/jquery/jquery-migrate.min.js,qver=1.4.1.pagespeed.jm.C2obERNcWh.js" />
+        <LinkTo Url="https://cpsharp.net/wp-content/plugins/google-analytics-for-wordpress/assets/js/frontend.min.js,qver=7.3.0.pagespeed.jm.aDYN2n5LR8.js" />
+        <LinkTo Url="https://cpsharp.net/wp-json/" />
+        <LinkTo Url="https://cpsharp.net/xmlrpc.php?rsd" />
+        <LinkTo Url="https://cpsharp.net/wp-includes/wlwmanifest.xml" />
+        <LinkTo Url="https://cpsharp.net/xmlrpc.php" />
+        <LinkTo Url="https://cpsharp.net/wp-content/uploads/2015/09/xcropped-cpsharp11.png.pagespeed.ic.1QCdkhCAxl.png" />
+        <LinkTo Url="https://cpsharp.net/wp-content/themes/cpsharp/lib/d3.js,qver=1.0.0.pagespeed.jm.ieQik8OGWM.js" />
+        <LinkTo Url="https://cpsharp.net/wp-content/themes/cpsharp/lib/tweenlite.js,qver==1.0.0+gs.cssplugin.js,qver==1.0.0+gs.easepack.js,qver==1.0.0.pagespeed.jc.1HZvxXS361.js" />
+        <LinkTo Url="https://cpsharp.net/wp-content,_themes,_cpsharp,_js,_app.core.js,qver==1.0.0+wp-content,_themes,_cpsharp,_js,_app.js,qver==1.0.0+wp-content,_themes,_cpsharp,_js,_app.map.js,qver==1.0.0+wp-content,_themes,_cpsharp,_js,_app.ui.js,qver==1.0.0+wp-content,_themes,_cpsharp,_js,_app.ui.builder.js,qver==1.0.0+wp-includes,_js,_wp-embed.min.js,qver==4.9.8.pagespeed.jc.rUlAa4iiEB.js" />
+      </InternalStaticLinks>
+      <ExternalPageLinks />
+      <ExternalStaticLinks>
+        <LinkTo Url="https://s0.wp.com/" />
+        <LinkTo Url="https://fonts.googleapis.com/" />
+        <LinkTo Url="https://s.w.org/" />
+        <LinkTo Url="https://fonts.googleapis.com/css?family=Coda%7CRaleway:400%2C700%2C200&amp;" />
+        <LinkTo Url="https://v0.wordpress.com/" />
+        <LinkTo Url="https://i0.wp.com/" />
+        <LinkTo Url="https://i1.wp.com/" />
+        <LinkTo Url="https://i2.wp.com/" />
+        <LinkTo Url="https://i1.wp.com/cpsharp.net/wp-content/uploads/2015/09/cropped-cpsharp.logo_.300.white_.png?fit=32%2C32&amp;" />
+        <LinkTo Url="https://i1.wp.com/cpsharp.net/wp-content/uploads/2015/09/cropped-cpsharp.logo_.300.white_.png?fit=192%2C192&amp;" />
+        <LinkTo Url="https://i1.wp.com/cpsharp.net/wp-content/uploads/2015/09/cropped-cpsharp.logo_.300.white_.png?fit=180%2C180&amp;" />
+        <LinkTo Url="https://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201847" />
+        <LinkTo Url="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" />
+        <LinkTo Url="https://stats.wp.com/e-201847.js" />
+      </ExternalStaticLinks>
+    </Page>
+    <Page Url="https://cpsharp.net/category/root/aboutus/" StatusCode="200">
+      <InternalPageLinks>
+        <LinkTo Url="https://cpsharp.net/category/root/aboutus/" />
+        <LinkTo Url="https://cpsharp.net/category/root/tech/" />
+        <LinkTo Url="https://cpsharp.net/category/root/contact/" />
+        <LinkTo Url="https://cpsharp.net/category/root/services/" />
+        <LinkTo Url="https://cpsharp.net/category/root/folio/" />
+      </InternalPageLinks>
+      <InternalStaticLinks>
+        <LinkTo Url="https://cpsharp.net/category/root/aboutus/" />
+        <LinkTo Url="https://cpsharp.net/feed/" />
+        <LinkTo Url="https://cpsharp.net/comments/feed/" />
+        <LinkTo Url="https://cpsharp.net/category/root/aboutus/feed/" />
+        <LinkTo Url="https://cpsharp.net/wp-content/themes/cpsharp/A.style.css,qver=2.6.1.pagespeed.cf.3tT5qO8zy3.css" />
+        <LinkTo Url="https://cpsharp.net/wp-content/themes/cpsharp/style/A.modals.css,qver=2.6.1.pagespeed.cf.ocr2OpfMjj.css" />
+        <LinkTo Url="https://cpsharp.net/wp-content/plugins/jetpack/css/A.jetpack.css,qver=6.7.pagespeed.cf.Q7AhKVCDHQ.css" />
+        <LinkTo Url="https://cpsharp.net/wp-includes/js/jquery/jquery.js,qver=1.12.4.pagespeed.jm.pPCPAKkkss.js" />
+        <LinkTo Url="https://cpsharp.net/wp-includes/js/jquery/jquery-migrate.min.js,qver=1.4.1.pagespeed.jm.C2obERNcWh.js" />
+        <LinkTo Url="https://cpsharp.net/wp-content/plugins/google-analytics-for-wordpress/assets/js/frontend.min.js,qver=7.3.0.pagespeed.jm.aDYN2n5LR8.js" />
+        <LinkTo Url="https://cpsharp.net/wp-json/" />
+        <LinkTo Url="https://cpsharp.net/xmlrpc.php?rsd" />
+        <LinkTo Url="https://cpsharp.net/wp-includes/wlwmanifest.xml" />
+        <LinkTo Url="https://cpsharp.net/xmlrpc.php" />
+        <LinkTo Url="https://cpsharp.net/wp-content/uploads/2015/09/xcropped-cpsharp11.png.pagespeed.ic.1QCdkhCAxl.png" />
+        <LinkTo Url="https://cpsharp.net/wp-content/themes/cpsharp/lib/d3.js,qver=1.0.0.pagespeed.jm.ieQik8OGWM.js" />
+        <LinkTo Url="https://cpsharp.net/wp-content/themes/cpsharp/lib/tweenlite.js,qver==1.0.0+gs.cssplugin.js,qver==1.0.0+gs.easepack.js,qver==1.0.0.pagespeed.jc.1HZvxXS361.js" />
+        <LinkTo Url="https://cpsharp.net/wp-content,_themes,_cpsharp,_js,_app.core.js,qver==1.0.0+wp-content,_themes,_cpsharp,_js,_app.js,qver==1.0.0+wp-content,_themes,_cpsharp,_js,_app.map.js,qver==1.0.0+wp-content,_themes,_cpsharp,_js,_app.ui.js,qver==1.0.0+wp-content,_themes,_cpsharp,_js,_app.ui.builder.js,qver==1.0.0+wp-includes,_js,_wp-embed.min.js,qver==4.9.8.pagespeed.jc.rUlAa4iiEB.js" />
+      </InternalStaticLinks>
+      <ExternalPageLinks />
+      <ExternalStaticLinks>
+        <LinkTo Url="https://s0.wp.com/" />
+        <LinkTo Url="https://fonts.googleapis.com/" />
+        <LinkTo Url="https://s.w.org/" />
+        <LinkTo Url="https://fonts.googleapis.com/css?family=Coda%7CRaleway:400%2C700%2C200&amp;" />
+        <LinkTo Url="https://v0.wordpress.com/" />
+        <LinkTo Url="https://i0.wp.com/" />
+        <LinkTo Url="https://i1.wp.com/" />
+        <LinkTo Url="https://i2.wp.com/" />
+        <LinkTo Url="https://i1.wp.com/cpsharp.net/wp-content/uploads/2015/09/cropped-cpsharp.logo_.300.white_.png?fit=32%2C32&amp;" />
+        <LinkTo Url="https://i1.wp.com/cpsharp.net/wp-content/uploads/2015/09/cropped-cpsharp.logo_.300.white_.png?fit=192%2C192&amp;" />
+        <LinkTo Url="https://i1.wp.com/cpsharp.net/wp-content/uploads/2015/09/cropped-cpsharp.logo_.300.white_.png?fit=180%2C180&amp;" />
+        <LinkTo Url="https://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201847" />
+        <LinkTo Url="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" />
+        <LinkTo Url="https://stats.wp.com/e-201847.js" />
+      </ExternalStaticLinks>
+    </Page>
+    <Page Url="https://cpsharp.net/category/root/tech/" StatusCode="200">
+      <InternalPageLinks>
+        <LinkTo Url="https://cpsharp.net/category/root/aboutus/" />
+        <LinkTo Url="https://cpsharp.net/category/root/tech/" />
+        <LinkTo Url="https://cpsharp.net/category/root/contact/" />
+        <LinkTo Url="https://cpsharp.net/category/root/services/" />
+        <LinkTo Url="https://cpsharp.net/category/root/folio/" />
+      </InternalPageLinks>
+      <InternalStaticLinks>
+        <LinkTo Url="https://cpsharp.net/category/root/tech/" />
+        <LinkTo Url="https://cpsharp.net/feed/" />
+        <LinkTo Url="https://cpsharp.net/comments/feed/" />
+        <LinkTo Url="https://cpsharp.net/category/root/tech/feed/" />
+        <LinkTo Url="https://cpsharp.net/wp-content/themes/cpsharp/A.style.css,qver=2.6.1.pagespeed.cf.3tT5qO8zy3.css" />
+        <LinkTo Url="https://cpsharp.net/wp-content/themes/cpsharp/style/A.modals.css,qver=2.6.1.pagespeed.cf.ocr2OpfMjj.css" />
+        <LinkTo Url="https://cpsharp.net/wp-content/plugins/jetpack/css/A.jetpack.css,qver=6.7.pagespeed.cf.Q7AhKVCDHQ.css" />
+        <LinkTo Url="https://cpsharp.net/wp-includes/js/jquery/jquery.js,qver=1.12.4.pagespeed.jm.pPCPAKkkss.js" />
+        <LinkTo Url="https://cpsharp.net/wp-includes/js/jquery/jquery-migrate.min.js,qver=1.4.1.pagespeed.jm.C2obERNcWh.js" />
+        <LinkTo Url="https://cpsharp.net/wp-content/plugins/google-analytics-for-wordpress/assets/js/frontend.min.js,qver=7.3.0.pagespeed.jm.aDYN2n5LR8.js" />
+        <LinkTo Url="https://cpsharp.net/wp-json/" />
+        <LinkTo Url="https://cpsharp.net/xmlrpc.php?rsd" />
+        <LinkTo Url="https://cpsharp.net/wp-includes/wlwmanifest.xml" />
+        <LinkTo Url="https://cpsharp.net/xmlrpc.php" />
+        <LinkTo Url="https://cpsharp.net/wp-content/uploads/2015/09/xcropped-cpsharp11.png.pagespeed.ic.1QCdkhCAxl.png" />
+        <LinkTo Url="https://cpsharp.net/wp-content/themes/cpsharp/lib/d3.js,qver=1.0.0.pagespeed.jm.ieQik8OGWM.js" />
+        <LinkTo Url="https://cpsharp.net/wp-content/themes/cpsharp/lib/tweenlite.js,qver==1.0.0+gs.cssplugin.js,qver==1.0.0+gs.easepack.js,qver==1.0.0.pagespeed.jc.1HZvxXS361.js" />
+        <LinkTo Url="https://cpsharp.net/wp-content,_themes,_cpsharp,_js,_app.core.js,qver==1.0.0+wp-content,_themes,_cpsharp,_js,_app.js,qver==1.0.0+wp-content,_themes,_cpsharp,_js,_app.map.js,qver==1.0.0+wp-content,_themes,_cpsharp,_js,_app.ui.js,qver==1.0.0+wp-content,_themes,_cpsharp,_js,_app.ui.builder.js,qver==1.0.0+wp-includes,_js,_wp-embed.min.js,qver==4.9.8.pagespeed.jc.rUlAa4iiEB.js" />
+      </InternalStaticLinks>
+      <ExternalPageLinks />
+      <ExternalStaticLinks>
+        <LinkTo Url="https://s0.wp.com/" />
+        <LinkTo Url="https://fonts.googleapis.com/" />
+        <LinkTo Url="https://s.w.org/" />
+        <LinkTo Url="https://fonts.googleapis.com/css?family=Coda%7CRaleway:400%2C700%2C200&amp;" />
+        <LinkTo Url="https://v0.wordpress.com/" />
+        <LinkTo Url="https://i0.wp.com/" />
+        <LinkTo Url="https://i1.wp.com/" />
+        <LinkTo Url="https://i2.wp.com/" />
+        <LinkTo Url="https://i1.wp.com/cpsharp.net/wp-content/uploads/2015/09/cropped-cpsharp.logo_.300.white_.png?fit=32%2C32&amp;" />
+        <LinkTo Url="https://i1.wp.com/cpsharp.net/wp-content/uploads/2015/09/cropped-cpsharp.logo_.300.white_.png?fit=192%2C192&amp;" />
+        <LinkTo Url="https://i1.wp.com/cpsharp.net/wp-content/uploads/2015/09/cropped-cpsharp.logo_.300.white_.png?fit=180%2C180&amp;" />
+        <LinkTo Url="https://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201847" />
+        <LinkTo Url="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" />
+        <LinkTo Url="https://stats.wp.com/e-201847.js" />
+      </ExternalStaticLinks>
+    </Page>
+    <Page Url="https://cpsharp.net/category/root/services/" StatusCode="200">
+      <InternalPageLinks>
+        <LinkTo Url="https://cpsharp.net/category/root/aboutus/" />
+        <LinkTo Url="https://cpsharp.net/category/root/tech/" />
+        <LinkTo Url="https://cpsharp.net/category/root/contact/" />
+        <LinkTo Url="https://cpsharp.net/category/root/services/" />
+        <LinkTo Url="https://cpsharp.net/category/root/folio/" />
+      </InternalPageLinks>
+      <InternalStaticLinks>
+        <LinkTo Url="https://cpsharp.net/category/root/services/" />
+        <LinkTo Url="https://cpsharp.net/feed/" />
+        <LinkTo Url="https://cpsharp.net/comments/feed/" />
+        <LinkTo Url="https://cpsharp.net/category/root/services/feed/" />
+        <LinkTo Url="https://cpsharp.net/wp-content/themes/cpsharp/A.style.css,qver=2.6.1.pagespeed.cf.3tT5qO8zy3.css" />
+        <LinkTo Url="https://cpsharp.net/wp-content/themes/cpsharp/style/A.modals.css,qver=2.6.1.pagespeed.cf.ocr2OpfMjj.css" />
+        <LinkTo Url="https://cpsharp.net/wp-content/plugins/jetpack/css/A.jetpack.css,qver=6.7.pagespeed.cf.Q7AhKVCDHQ.css" />
+        <LinkTo Url="https://cpsharp.net/wp-includes/js/jquery/jquery.js,qver=1.12.4.pagespeed.jm.pPCPAKkkss.js" />
+        <LinkTo Url="https://cpsharp.net/wp-includes/js/jquery/jquery-migrate.min.js,qver=1.4.1.pagespeed.jm.C2obERNcWh.js" />
+        <LinkTo Url="https://cpsharp.net/wp-content/plugins/google-analytics-for-wordpress/assets/js/frontend.min.js,qver=7.3.0.pagespeed.jm.aDYN2n5LR8.js" />
+        <LinkTo Url="https://cpsharp.net/wp-json/" />
+        <LinkTo Url="https://cpsharp.net/xmlrpc.php?rsd" />
+        <LinkTo Url="https://cpsharp.net/wp-includes/wlwmanifest.xml" />
+        <LinkTo Url="https://cpsharp.net/xmlrpc.php" />
+        <LinkTo Url="https://cpsharp.net/wp-content/uploads/2015/09/xcropped-cpsharp11.png.pagespeed.ic.1QCdkhCAxl.png" />
+        <LinkTo Url="https://cpsharp.net/wp-content/themes/cpsharp/lib/d3.js,qver=1.0.0.pagespeed.jm.ieQik8OGWM.js" />
+        <LinkTo Url="https://cpsharp.net/wp-content/themes/cpsharp/lib/tweenlite.js,qver==1.0.0+gs.cssplugin.js,qver==1.0.0+gs.easepack.js,qver==1.0.0.pagespeed.jc.1HZvxXS361.js" />
+        <LinkTo Url="https://cpsharp.net/wp-content,_themes,_cpsharp,_js,_app.core.js,qver==1.0.0+wp-content,_themes,_cpsharp,_js,_app.js,qver==1.0.0+wp-content,_themes,_cpsharp,_js,_app.map.js,qver==1.0.0+wp-content,_themes,_cpsharp,_js,_app.ui.js,qver==1.0.0+wp-content,_themes,_cpsharp,_js,_app.ui.builder.js,qver==1.0.0+wp-includes,_js,_wp-embed.min.js,qver==4.9.8.pagespeed.jc.rUlAa4iiEB.js" />
+      </InternalStaticLinks>
+      <ExternalPageLinks />
+      <ExternalStaticLinks>
+        <LinkTo Url="https://s0.wp.com/" />
+        <LinkTo Url="https://fonts.googleapis.com/" />
+        <LinkTo Url="https://s.w.org/" />
+        <LinkTo Url="https://fonts.googleapis.com/css?family=Coda%7CRaleway:400%2C700%2C200&amp;" />
+        <LinkTo Url="https://v0.wordpress.com/" />
+        <LinkTo Url="https://i0.wp.com/" />
+        <LinkTo Url="https://i1.wp.com/" />
+        <LinkTo Url="https://i2.wp.com/" />
+        <LinkTo Url="https://i1.wp.com/cpsharp.net/wp-content/uploads/2015/09/cropped-cpsharp.logo_.300.white_.png?fit=32%2C32&amp;" />
+        <LinkTo Url="https://i1.wp.com/cpsharp.net/wp-content/uploads/2015/09/cropped-cpsharp.logo_.300.white_.png?fit=192%2C192&amp;" />
+        <LinkTo Url="https://i1.wp.com/cpsharp.net/wp-content/uploads/2015/09/cropped-cpsharp.logo_.300.white_.png?fit=180%2C180&amp;" />
+        <LinkTo Url="https://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201847" />
+        <LinkTo Url="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js" />
+        <LinkTo Url="https://stats.wp.com/e-201847.js" />
+      </ExternalStaticLinks>
+    </Page>
+  </TravesedPages>
+</CrawlResult>
