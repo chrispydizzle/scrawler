@@ -66,24 +66,9 @@
                 return File.ReadAllText("Html/DoubleBackslash.html");
             }
 
-            public static string InvalidLink()
-            {
-                return File.ReadAllText("Html/InvalidLink.html");
-            }
-
             public static string AnchorLink()
             {
                 return File.ReadAllText("Html/AnchorLinks.html");
-            }
-
-            public static string WiproDigital()
-            {
-                return File.ReadAllText("Html/wiprodigital.html");
-            }
-
-            public static string InteractiveEdge()
-            {
-                return File.ReadAllText("Html/interactiveedge.html");
             }
         }
     }

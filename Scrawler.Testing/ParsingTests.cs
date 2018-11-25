@@ -9,18 +9,6 @@
     public class ParsingFunctionalTests
     {
         [TestMethod]
-        public void ParserGetsLinks()
-        {
-            string content = TestHelpers.Html.WiproDigital();
-            ResponseParser rp = new ResponseParser(TestHelpers.TestValues.WiproDomainUri, content);
-            List<string> references = rp.GetReferences();
-            List<string> links = rp.GetLinks();
-
-            Assert.AreEqual(29, references.Count);
-            Assert.AreEqual(38, links.Count);
-        }
-
-        [TestMethod]
         public void ParserHandlesDoubleBackslash()
         {
             string content = TestHelpers.Html.DoubleBackslash();
