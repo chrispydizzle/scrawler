@@ -13,7 +13,10 @@ A **s**imple web**crawler** written in C#
 ## Test
 A suite of unit tests has been written using the MS Test Framework which is installed alongside Visual Studio and can be run from the Visual Studio IDE. The tests are contained in the Scrawler.Testing project. <br />
 Just wanted to place a little more emphasis on this bit, as the code was written from the start with the intent to make all of the moving parts very testable. I have used some fairly standard dependency injection patterns as well as proper separation-of-concerns between each main component to ensure that I could test them as I wrote them without having to continually hammer some poor website. <br />
-
+There are three main test sets-
+* ResponseWorkerTests - These tests validate that the ResponseWorker appropriately classifies artifacts that are found during parsing (ie: internal/external static/link).
+* ParsingTests - These tests validate that the Parser correctly handles a variety of different artifcat types, and ensures they are normalized before being passed to the ResponseWorker
+* CrawlingTests - These tests validate the behavior of the crawler- that it avoids making duplicate requests, correctly follows internal links, and correctly avoids following external links and links to static elements.
 
 ## Run
 The console application takes a single command line argument, the domain/url to be crawled, and creates an xml file describing each page found within the domain.<br/>
@@ -58,9 +61,11 @@ Output is in xml format- a sample of me crawling cpsharp.net can be found here: 
 
 ## Notes
 So, what would I like to see added, time permitting?
-* At the moment, there's no way to specify a maximum depth, which means if you crawl a site that has links twenty levels deep, well, this guys is gonna crawl it.
+* At the moment, there's no way to specify a maximum depth, which means if you crawl a site that has links twenty levels deep, well, this program is going to crawl it. 
 * I'd have liked to improve the console input, to allow for more options and a better user experience. At the moment you just throw in a domain or a url and optionally the thread count.
 * While the xml output is by all means descriptive, it could definitely be made prettier.
+* It would be a nice feature if the crawler dove into other artifacts (like css files) looking for additional static elements. 
+* Right now the crawler only analyzes pages linked via an <a> tag. This means links that are triggered via javascript will be missed.
 
 ### Other Dependencies
 I've made use of the HtmlAgilityPack (freely available, here: https://html-agility-pack.net/) to manage html parsing. <br />
