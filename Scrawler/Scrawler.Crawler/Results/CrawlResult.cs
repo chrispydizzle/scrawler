@@ -1,4 +1,4 @@
-﻿namespace Scrawler.Crawler.Results
+﻿namespace Scrawler.Engine.Results
 {
     using System;
     using System.Collections.Generic;
@@ -11,11 +11,11 @@
         {
         }
 
-        public CrawlResult(Uri uri)
+        public CrawlResult(Uri uri, IEnumerable<DomainResultNode> results)
         {
             this.BaseUrl = uri.AbsoluteUri;
             this.Domain = uri.Authority;
-            this.TravesedPages = new List<DomainResultNode>();
+            this.TravesedPages = new List<DomainResultNode>(results);
         }
 
         [XmlAttribute]

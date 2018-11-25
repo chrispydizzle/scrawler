@@ -1,4 +1,4 @@
-﻿namespace Scrawler.Crawler.Output
+﻿namespace Scrawler.Engine.Output
 {
     using System.Text;
     using Results;

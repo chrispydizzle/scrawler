@@ -4,9 +4,9 @@ namespace Scrawler
     using System.Diagnostics;
     using System.IO;
     using System.Reflection;
-    using Crawler;
-    using Crawler.Output;
-    using Crawler.Results;
+    using Engine;
+    using Engine.Output;
+    using Engine.Results;
 
     internal class Program
     {

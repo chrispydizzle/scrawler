@@ -2,7 +2,7 @@
 A **s**imple web**crawler** written in C#
 
 ## Solution Contents Overview
-* Scrawler.Crawler - A .NET class library containing the *meat* of the project, including the web crawler and output modules.
+* Scrawler.Engine - A .NET class library containing the *meat* of the project, including the web crawler and output modules.
 * Scrawler - A Windows console application that utilizes the Scrawler.Crawler library to crawl a given domain passed via command line (ie: http://dogeplanet.com) and generate a simple structured sitemap.
 * Scrawler.Testing - An MS Test Project containing unit tests that validate the functionality within Scrawler.Crawler.
 
@@ -23,6 +23,10 @@ Would output the crawl result to C:\Temp on your local system.
 
 ## Notes
 This is still a work in progress.
+
+### Other Dependencies
+I've made use of the HtmlAgilityPack (freely available, here: https://html-agility-pack.net/) to manage html parsing. <br />
+I also took advantage of the Microsoft.Extensions.CommandLineUtils package to simplify input handling in the console app.
 
 ### Requirements
 Please write a simple web crawler in a language of your choice - we'd suggest using tools / languages that you're already familiar with.

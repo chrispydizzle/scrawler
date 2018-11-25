@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scrawler", "Scrawler.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scrawler.Testing", "..\Scrawler.Testing\Scrawler.Testing.csproj", "{AA2BFC30-67DA-4575-A082-1E49565B7160}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scrawler.Crawler", "Scrawler.Crawler\Scrawler.Crawler.csproj", "{AAFAC356-5F9F-419B-BC03-F9E5C5856F34}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scrawler.Engine", "Scrawler.Crawler\Scrawler.Engine.csproj", "{AAFAC356-5F9F-419B-BC03-F9E5C5856F34}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

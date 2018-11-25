@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
     using System.Diagnostics;
-    using Crawler.Logging;
+    using Engine.Logging;
 
     internal class MockLogger : ILog
     {

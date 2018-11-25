@@ -55,18 +55,34 @@
     <Compile Include="Mocks\MockPageRequester.cs" />
     <Compile Include="ParsingTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResponseWorkerTests.cs" />
     <Compile Include="TestData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Scrawler\Scrawler.Crawler\Scrawler.Crawler.csproj">
+    <ProjectReference Include="..\Scrawler\Scrawler.Crawler\Scrawler.Engine.csproj">
       <Project>{aafac356-5f9f-419b-bc03-f9e5c5856f34}</Project>
-      <Name>Scrawler.Crawler</Name>
+      <Name>Scrawler.Engine</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Html\LinksImagesLocalRemote.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Html\Empty.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Html\DuplicateLinkTwo.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Html\DuplicateLinkOne.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Html\SomeLinks.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Html\RelativeLinks.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -80,9 +96,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Html\DoubleBackslash.html">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Html\InteractiveEdge.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Html\WiproDigital.html">

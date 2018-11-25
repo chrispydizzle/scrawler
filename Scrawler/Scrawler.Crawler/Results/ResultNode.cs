@@ -1,4 +1,4 @@
-﻿namespace Scrawler.Crawler.Results
+﻿namespace Scrawler.Engine.Results
 {
     using System.Xml.Serialization;
 

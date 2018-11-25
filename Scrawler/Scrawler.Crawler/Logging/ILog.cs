@@ -1,4 +1,4 @@
-﻿namespace Scrawler.Crawler.Logging
+﻿namespace Scrawler.Engine.Logging
 {
     public interface ILog
     {

@@ -1,4 +1,4 @@
-﻿namespace Scrawler.Crawler.Results
+﻿namespace Scrawler.Engine.Results
 {
     public class ExternalResultLeaf : ResultNode
     {

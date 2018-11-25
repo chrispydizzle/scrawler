@@ -1,7 +1,5 @@
-﻿namespace Scrawler.Crawler.Results
+﻿namespace Scrawler.Engine.Results
 {
-    using System.Xml.Serialization;
-
     public class DomainResultLeaf : ResultNode
     {
         public DomainResultLeaf()

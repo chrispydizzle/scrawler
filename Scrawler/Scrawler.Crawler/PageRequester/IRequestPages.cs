@@ -1,4 +1,4 @@
-﻿namespace Scrawler.Crawler.PageRequester
+﻿namespace Scrawler.Engine.PageRequester
 {
     using System;
     using System.Net.Http;

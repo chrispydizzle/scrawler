@@ -1,13 +1,12 @@
-﻿namespace Scrawler.Crawler
+﻿namespace Scrawler.Engine
 {
     using System;
     using System.Collections.Concurrent;
     using System.Collections.Generic;
-    using System.Linq;
-    using System.Net.Http;
     using System.Threading;
     using Logging;
     using PageRequester;
+    using Parsing;
     using Results;
 
     /// <summary>
@@ -17,27 +16,23 @@
     {
         private readonly ILog logger;
         private readonly IRequestPages pageRequester;
-        private int maxDepth;
+        private readonly CrawlConfiguration config;
+        private readonly CountdownEvent threadLimiter = new CountdownEvent(1);
 
         /// <summary>
         ///     default ctor for concrete usage
         /// </summary>
         public ScrawlerCrawler()
-            : this(new InternetPageRequester(), new ConsoleLogger(), 5)
-        {
-        }
-
-        public ScrawlerCrawler(int maxDepth)
-            : this(new InternetPageRequester(), new ConsoleLogger(), maxDepth)
+            : this(new InternetPageRequester(), new ConsoleLogger())
         {
         }
 
         /// <summary>
-        ///     ctor to pass in a page requester and use a standard console logger
+        ///     ctor to pass in a page requester, use a standard console logger, with infinite depth
         /// </summary>
         /// <param name="pageRequester">A page requester</param>
         public ScrawlerCrawler(IRequestPages pageRequester)
-            : this(pageRequester, new ConsoleLogger(), 5)
+            : this(pageRequester, new ConsoleLogger())
         {
         }
 
@@ -46,11 +41,11 @@
         /// </summary>
         /// <param name="pageRequester">A page requester</param>
         /// <param name="logger">A logger</param>
-        public ScrawlerCrawler(IRequestPages pageRequester, ILog logger, int maxDepth)
+        public ScrawlerCrawler(IRequestPages pageRequester, ILog logger, CrawlConfiguration config = null)
         {
             this.pageRequester = pageRequester;
             this.logger = logger;
-            this.maxDepth = maxDepth;
+            this.config = config ?? CrawlConfiguration.Default();
         }
 
         /// <summary>
@@ -61,95 +56,82 @@
         {
             this.logger.Log($"Beginning Crawl of {originUrl}");
 
-            if (!originUrl.StartsWith("http")) originUrl = $"http://{originUrl}";
-
-            // Get root domain
-            Uri originUri = new Uri(originUrl);
-            string domain = originUri.Authority;
-
-            // initialize crawler queue, hashset, and output result
-            CrawlResult cr = new CrawlResult(originUri);
-
-            HashSet<Uri> visited = new HashSet<Uri>();
-            ConcurrentQueue<Uri> toVisit = new ConcurrentQueue<Uri>();
-
-            toVisit.Enqueue(originUri);
-
-            int depthCounter = 0;
-            HashSet<Uri> nextLevel = new HashSet<Uri>();
-            while (toVisit.Any() && depthCounter < 5)
+            if (!originUrl.StartsWith("http"))
             {
-                if (!toVisit.TryDequeue(out Uri currentTarget))
+                originUrl = $"http://{originUrl}";
+            }
+
+            Uri originUri = new Uri(originUrl);
+
+            HashSet<Uri> visitedUris = new HashSet<Uri>();
+            ConcurrentQueue<Uri> foundUris = new ConcurrentQueue<Uri>();
+            ConcurrentBag<DomainResultNode> pageNodes = new ConcurrentBag<DomainResultNode>();
+
+            foundUris.Enqueue(originUri);
+
+            bool throttling = false;
+
+            // crawl as long as the queue is non-empty or we have active threads.
+            while (foundUris.TryDequeue(out Uri currentTarget) || this.threadLimiter.CurrentCount > 1)
+            {
+                // kick out duplicates and nulls
+                if (visitedUris.Contains(currentTarget) || currentTarget == null)
                 {
-                    Thread.Sleep(100);
                     continue;
                 }
 
-                if (visited.Contains(currentTarget)) continue;
-                visited.Add(currentTarget);
-                DomainResultNode resultNode = new DomainResultNode(currentTarget.AbsoluteUri);
-
-                HttpResponseMessage responseMessage = this.pageRequester.Request(currentTarget);
-
-                int statusCode = (int) responseMessage.StatusCode;
-                this.logger.Log($"GET {currentTarget} - {statusCode}");
-
-                resultNode.StatusCode = statusCode;
-                if (statusCode == 200 && responseMessage.Content.Headers.ContentType.MediaType.StartsWith("text"))
+                // re-queue an item if we're over our thread count.
+                if (this.threadLimiter.CurrentCount > this.config.Threads)
                 {
+                    if (!throttling)
+                    {
+                        this.logger.Log($"Crawler reached thread limit {this.config.Threads}. Throttling.");
+                        throttling = true;
+                    }
+
+                    foundUris.Enqueue(currentTarget);
+                    continue;
+                }
+
+                throttling = false;
+
+                // start work on the next link and boost the limiter
+                visitedUris.Add(currentTarget);
+                this.threadLimiter.AddCount();
+
+                ThreadPool.QueueUserWorkItem(state =>
+                {
+                    Uri target = (Uri) state;
+
                     try
                     {
-                        string body = responseMessage.Content.ReadAsStringAsync().Result;
-
-                        ResultParser parser = new ResultParser(currentTarget);
-                        ParseResult urls = parser.ParseResult(body);
-
-                        foreach (string link in urls.PageLinks)
+                        this.logger.Log($"Crawler processing {target}.");
+                        ResponseResult processedResponse = new ResponseWorker(target).ProcessResponse(this.pageRequester.Request(target));
+                        
+                        foreach (Uri uri in processedResponse.InternalUris)    
                         {
-                            Uri currentUri = new Uri(link);
-                            if (currentUri.Authority == domain && (currentUri.Scheme == "http" || currentUri.Scheme == "https"))
-                            {
-                                resultNode.InternalPageLinks.Add(new DomainResultLeaf(currentUri.AbsoluteUri));
-                                nextLevel.Add(currentUri);
-                            }
-                            else
-                            {
-                                resultNode.ExternalPageLinks.Add(new ExternalResultLeaf(currentUri.AbsoluteUri));
-                            }
+                            foundUris.Enqueue(uri);
                         }
 
-                        foreach (string link in urls.StaticLinks)
-                        {
-                            Uri currentUri = new Uri(link);
-                            if (currentUri.Authority == domain)
-                            {
-                                resultNode.InternalStaticLinks.Add(new DomainResultLeaf(currentUri.AbsoluteUri));
-                            }
-                            else
-                            {
-                                resultNode.ExternalStaticLinks.Add(new ExternalResultLeaf(currentUri.AbsoluteUri));
-                            }
-                        }
+                        pageNodes.Add(processedResponse.DomainResultNode);
                     }
                     catch (Exception ex)
                     {
-                        this.logger.Log($"An error occurred parsing {currentTarget}: {ex}");
-                        resultNode.StatusCode = 500;
+                        this.logger.Log($"An error occurred parsing {state}: {ex}");
                     }
-
-                    cr.TravesedPages.Add(resultNode);
-
-                    if (!toVisit.Any())
+                    finally
                     {
-                        toVisit = new ConcurrentQueue<Uri>(nextLevel);
-                        this.logger.Log($"Increasing Depth to {depthCounter}");
-                        depthCounter++;
-                        nextLevel.Clear();
+                        // always release thread limiit
+                        this.threadLimiter.Signal();
                     }
-                }
+                }, currentTarget);
             }
 
-            return cr;
+            // release initial thread limit and wait for the remainder of the threads
+            this.threadLimiter.Signal();
+            this.threadLimiter.Wait();
+
+            return new CrawlResult(originUri, pageNodes);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace Scrawler.Crawler.Logging
+﻿namespace Scrawler.Engine.Logging
 {
     using System;
 
